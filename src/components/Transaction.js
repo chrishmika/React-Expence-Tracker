@@ -3,6 +3,7 @@ import { GlobalContext } from "../context/GlobalState";
 
 export const Transaction = (props) => {
   const { deleteTransaction } = useContext(GlobalContext);
+
   const sign = props.transaction.amount < 0 ? "-" : "+";
   return (
     <li className={props.transaction.amount < 0 ? "minus" : "plus"}>

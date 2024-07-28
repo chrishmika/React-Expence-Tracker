@@ -5,10 +5,10 @@ import AppReducer from "./AppReducer";
 //Initial state
 const initialState = {
   transactions: [
-    { id: 1, text: "Food", amount: -120 },
-    { id: 2, text: "Salary", amount: 500 },
-    { id: 3, text: "Internet", amount: -200 },
-    { id: 4, text: "Phone", amount: 100 },
+    // { id: 1, text: "Food", amount: -120 },
+    // { id: 2, text: "Salary", amount: 500 },
+    // { id: 3, text: "Internet", amount: -200 },
+    // { id: 4, text: "Phone", amount: 100 },
   ],
 };
 
@@ -27,11 +27,19 @@ export const GlobalProvider = ({ children }) => {
     });
   }
 
+  function addTransaction(transaction) {
+    dispatch({
+      type: "ADD_TRANSACTION",
+      payload: transaction,
+    });
+  }
+
   return (
     <GlobalContext.Provider
       value={{
         transactions: state.transactions,
         deleteTransaction,
+        addTransaction,
       }}
     >
       {children}
