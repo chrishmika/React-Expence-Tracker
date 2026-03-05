@@ -1,6 +1,73 @@
-# Getting Started with Create React App
+# React Expense Tracker
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A clean and simple expense tracker built with React and the Context API.
+
+Track your transactions, see your total balance, and get a quick breakdown of income vs expense in real time.
+
+## Features
+
+- Add transactions with a text label and amount.
+- Use positive amounts for income and negative amounts for expense.
+- View running balance instantly.
+- View separate totals for income and expense.
+- View full transaction history.
+- Delete any transaction from the history list.
+
+## Tech Stack
+
+- React (Create React App)
+- Context API + `useReducer` for global state management
+- Plain CSS for styling
+
+## How It Works
+
+The app keeps transactions in a global state using Context + Reducer:
+
+- `ADD_TRANSACTION` prepends a new transaction to the list.
+- `DELETE_TRANSACTION` removes a transaction by `id`.
+- Balance and totals are derived from transaction amounts.
+
+> Note: data is currently stored in memory only (no local storage or backend), so refreshing the page resets transactions.
+
+## Project Structure
+
+```text
+src/
+	App.js
+	App.css
+	index.js
+	components/
+		Header.js
+		Balance.js
+		IncomeExpense.js
+		TransactionList.js
+		Transaction.js
+		AddTransaction.js
+	context/
+		GlobalState.js
+		AppReducer.js
+```
+
+## Getting Started
+
+### 1) Prerequisites
+
+- Node.js 16+ (Node.js 18+ recommended)
+- npm (comes with Node.js)
+
+### 2) Install dependencies
+
+```bash
+npm install
+```
+
+### 3) Start development server
+
+```bash
+npm start
+```
+
+Then open: [http://localhost:3000](http://localhost:3000)
 
 ## Available Scripts
 
@@ -8,63 +75,54 @@ In the project directory, you can run:
 
 ### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Runs the app in development mode with hot reload.
 
 ### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Runs the test watcher.
 
 ### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Builds the app for production into the `build/` folder.
 
 ### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Ejects CRA configuration (irreversible).
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Usage
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+1. Enter a transaction name in the **Text** field.
+2. Enter amount:
+   - positive value for income (example: `2500`)
+   - negative value for expense (example: `-120`)
+3. Click **Add transaction**.
+4. Hover a transaction row and click **x** to delete it.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Key Components
 
-## Learn More
+- `Balance` → shows total balance.
+- `IncomeExpense` → shows income and expense totals.
+- `TransactionList` → renders all transaction rows.
+- `Transaction` → renders one row and delete action.
+- `AddTransaction` → controlled form for adding new entries.
+- `GlobalState` + `AppReducer` → centralized state updates.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Troubleshooting
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- `npm run dev` fails:
+  - This project uses Create React App, so use `npm start` instead.
+- App does not update as expected:
+  - Check browser console for runtime errors.
+  - Ensure dependencies are installed by running `npm install`.
 
-### Code Splitting
+## Future Improvements (Optional)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- Persist data with Local Storage.
+- Add form validation (empty text, zero amount).
+- Add categories and date filters.
+- Add charts for spending analysis.
+- Add backend sync and authentication.
 
-### Analyzing the Bundle Size
+## License
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This project is for learning/personal use. Add a license file if you plan to distribute it publicly.
